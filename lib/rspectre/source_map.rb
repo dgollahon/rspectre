@@ -45,5 +45,12 @@ module RSpectre
     def send_nodes(line)
       map.fetch(line, []).select { |node| node.type.equal?(:send) }
     end
+
+    class Null < self
+      public_class_method :new
+
+      def find_let(_)
+      end
+    end
   end
 end

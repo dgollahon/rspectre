@@ -9,6 +9,11 @@ module RSpectre
         walk(parsed_source) { |node| map.add(node) }
 
         map.freeze
+
+      rescue ::Parser::SyntaxError => error
+        warn Color.yellow("Warning! Skipping #{file} due to parsing error!")
+        warn error.diagnostic.render
+        Null.new
       end
 
       private
@@ -24,7 +29,7 @@ module RSpectre
       end
 
       def parsed_source
-        ::Parser::CurrentRuby.parse(raw_source)
+        ::Parser::CurrentRuby.parse(raw_source, file)
       end
 
       def raw_source
