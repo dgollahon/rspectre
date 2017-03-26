@@ -47,7 +47,20 @@ RSpec.shared_examples 'highlighted offenses' do |src|
       expect(messages.count).to eql(expectations.count)
 
       messages.zip(expectations) do |message_parts, expectation|
-        expect(message_parts).to eql(expectation.to_s.split("\n"))
+        expected_parts = expectation.to_s.split("\n")
+
+        expect(message_parts).to eql(expected_parts), <<~MSG
+          Expected:
+            #{expected_parts[0]}
+            #{expected_parts[1]}
+            #{expected_parts[2]}
+            #{expected_parts[3]}
+          Found:
+            #{message_parts[0]}
+            #{message_parts[1]}
+            #{message_parts[2]}
+            #{message_parts[3]}
+        MSG
       end
     end
   end
