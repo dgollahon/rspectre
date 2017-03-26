@@ -10,7 +10,7 @@ RSpec.shared_examples 'highlighted offenses' do |src|
     end
   end
 
-  let(:expectations) do
+  let(:expected_offenses) do
     line_count = 0
     last_line  = ''
 
@@ -20,14 +20,17 @@ RSpec.shared_examples 'highlighted offenses' do |src|
       if (match = current_line.match(header_pattern))
         start_column = match[:leading_space].length + 1
 
-        RSpectre::Offense.new(
-          file:         spec_file.path,
-          line:         line_count,
-          source_line:  last_line,
-          start_column: start_column,
-          end_column:   start_column + match[:highlight].length,
-          type:         match[:tag]
-        )
+        [
+          RSpectre::Offense.new(
+            file:         spec_file.path,
+            line:         line_count,
+            source_line:  last_line,
+            start_column: start_column,
+            end_column:   start_column + match[:highlight].length,
+            type:         match[:tag]
+          ),
+          match[:message]
+        ]
       else
         last_line = current_line
         line_count += 1
@@ -42,12 +45,12 @@ RSpec.shared_examples 'highlighted offenses' do |src|
 
   it 'highlights the offenses' do
     aggregate_failures do
-      messages = lint.split("\n").each_slice(4)
+      offenses = lint.split("\n").each_slice(4)
 
-      expect(messages.count).to eql(expectations.count)
+      expect(offenses.count).to eql(expected_offenses.count)
 
-      messages.zip(expectations) do |message_parts, expectation|
-        expected_parts = expectation.to_s.split("\n")
+      offenses.zip(expected_offenses) do |message_parts, (offense, description)|
+        expected_parts = offense.to_s.split("\n")
 
         expect(message_parts).to eql(expected_parts), <<~MSG
           Expected:
@@ -61,6 +64,8 @@ RSpec.shared_examples 'highlighted offenses' do |src|
             #{message_parts[2]}
             #{message_parts[3]}
         MSG
+
+        expect(offense.description).to eql(description)
       end
     end
   end

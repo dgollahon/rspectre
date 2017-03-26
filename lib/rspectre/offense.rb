@@ -24,10 +24,14 @@ module RSpectre
     def to_s
       <<~DOC
 
-          #{source_id}: #{offense_type}: #{offense_description}
+          #{source_id}: #{offense_type}: #{description}
               #{source_line}
               #{highlight}
       DOC
+    end
+
+    def description
+      DESCRIPTIONS.fetch(type)
     end
 
     private
@@ -38,10 +42,6 @@ module RSpectre
 
     def offense_type
       Color.yellow(type)
-    end
-
-    def offense_description
-      DESCRIPTIONS.fetch(type)
     end
 
     def highlight
