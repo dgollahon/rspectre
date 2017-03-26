@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples 'highlighted offenses' do |src|
-  subject(:lint) { `bin/rspectre #{spec_file.path}` }
+  subject(:lint) do
+    rspectre_path = File.expand_path('bin/rspectre')
+
+    Dir.chdir(File.dirname(spec_file.path)) do
+      `#{rspectre_path} #{spec_file.path}`
+    end
+  end
 
   let(:spec_file) do
     Tempfile.new.tap do |file|
@@ -22,7 +28,7 @@ RSpec.shared_examples 'highlighted offenses' do |src|
 
         [
           RSpectre::Offense.new(
-            file:         spec_file.path,
+            file:         File.realpath(spec_file.path),
             line:         line_count,
             source_line:  last_line,
             start_column: start_column,

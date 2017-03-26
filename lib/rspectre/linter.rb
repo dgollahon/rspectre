@@ -11,8 +11,10 @@ module RSpectre
     def self.register(locations)
       location = locations.first
 
-      file = location.path
+      file = File.realpath(location.path)
       line = location.lineno
+
+      return unless file.to_s.start_with?(File.realpath(Dir.pwd))
 
       raw_node = node_map(file).find_let(line)
 
