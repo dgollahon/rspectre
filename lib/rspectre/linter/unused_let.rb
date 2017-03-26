@@ -5,17 +5,11 @@ module RSpectre
     class UnusedLet < self
       TAG = 'UnusedLet'
 
-      def example_group.let(*args, &block)
-        node = UnusedLet.register(caller_locations)
+      def example_group.let(name, &block)
+        super(name, &block)
 
-        if node
-          super(*args) do
-            UnusedLet.record(node)
-
-            instance_exec(&block)
-          end
-        else
-          super(*args, &block)
+        UnusedLet.register(caller_locations) do |node|
+          UnusedLet.prepend_behavior(self, name) { UnusedLet.record(node) }
         end
       end
     end
