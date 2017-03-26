@@ -44,6 +44,11 @@ RSpec.describe RSpectre do
           expect(inner_used_directly).to eql('baz')
         end
       end
+
+      context 'duplicated name' do
+        let(:used) { 'not actually used' }
+        ^^^^^^^^^^ UnusedLet: Unused `let` definition.
+      end
     end
   RUBY
 end

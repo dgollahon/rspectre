@@ -15,7 +15,7 @@ module RSpectre
       raw_node = RSpectre::SOURCES.node_map(file).find_let(line)
 
       if raw_node
-        node = RSpectre::Node.new(file, raw_node)
+        node = RSpectre::Node.new(file, line, raw_node)
         TRACKER.register(self::TAG, node)
         yield node
       end

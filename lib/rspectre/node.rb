@@ -2,13 +2,9 @@
 
 module RSpectre
   class Node
-    include Concord.new(:file, :node)
+    include Concord.new(:file, :line, :node)
 
-    public :file
-
-    def line
-      location.first_line
-    end
+    public :file, :line
 
     def start_column
       location.column + 1
@@ -29,7 +25,7 @@ module RSpectre
     private
 
     def single_line?
-      location.first_line.equal?(location.last_line)
+      line.equal?(location.last_line)
     end
 
     def location
