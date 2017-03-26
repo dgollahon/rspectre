@@ -16,7 +16,6 @@ require 'rspectre/color'
 require 'rspectre/node'
 require 'rspectre/offense'
 require 'rspectre/runner'
-require 'rspectre/source_files'
 require 'rspectre/source_map'
 require 'rspectre/source_map/parser'
 require 'rspectre/tracker'
@@ -26,5 +25,4 @@ require 'rspectre/linter/unused_let'
 
 module RSpectre
   TRACKER = Tracker.new
-  SOURCES = SourceFiles.new
 end
