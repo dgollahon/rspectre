@@ -22,6 +22,12 @@ RSpec.describe RSpectre do
         subject { 'a' }
         ^^^^^^^ UnusedSubject: Unused `subject` definition.
       end
+
+      context 'named but referenced anonymous' do
+        subject(:not_directly_referenced) { 'a' }
+
+        specify { expect(subject).to eql('a') }
+      end
     end
   RUBY
 end

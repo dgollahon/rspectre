@@ -9,7 +9,8 @@ module RSpectre
         super(*name, &block)
 
         UnusedSubject.register(caller_locations) do |node|
-          UnusedSubject.prepend_behavior(self, name || :subject) { UnusedSubject.record(node) }
+          UnusedSubject.prepend_behavior(self, :subject) { UnusedSubject.record(node) }
+          alias_method name, :subject if name
         end
       end
 
