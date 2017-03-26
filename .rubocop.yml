@@ -1,6 +1,7 @@
 ---
 AllCops:
   TargetRubyVersion: 2.4
+  DisplayCopNames: true
 require:
   - rubocop-rspec
 Style/Documentation:
@@ -81,6 +82,8 @@ Style/GuardClause:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
+Style/LambdaCall:
+  Enabled: false
 RSpec/MessageExpectation:
   Enabled: true
 RSpec/ExampleLength:
