@@ -22,6 +22,7 @@ require 'rspectre/tracker'
 
 require 'rspectre/linter'
 require 'rspectre/linter/unused_let'
+require 'rspectre/linter/unused_subject'
 
 module RSpectre
   TRACKER = Tracker.new

@@ -4,7 +4,10 @@ module RSpectre
   class Offense
     include Anima.new(:file, :line, :source_line, :start_column, :end_column, :type)
 
-    DESCRIPTIONS = { 'UnusedLet' => 'Unused `let` definition.' }.freeze
+    DESCRIPTIONS = {
+      'UnusedLet'     => 'Unused `let` definition.',
+      'UnusedSubject' => 'Unused `subject` definition.'
+    }.freeze
 
     def self.parse(type, node)
       new(

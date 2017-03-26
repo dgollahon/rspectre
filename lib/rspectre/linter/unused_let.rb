@@ -12,6 +12,10 @@ module RSpectre
           UnusedLet.prepend_behavior(self, name) { UnusedLet.record(node) }
         end
       end
+
+      def self.find_node(node_map, line)
+        node_map.find_method(:let, line)
+      end
     end
   end
 end

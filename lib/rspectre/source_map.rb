@@ -19,26 +19,23 @@ module RSpectre
       map[node.loc.first_line] <<= node
     end
 
-    def find_let(line)
-      lets = find_methods(line, :let)
+    def find_method(target_selector, line)
+      candidates = find_methods(target_selector, line)
 
-      case lets.length
-      when 0
-        fail "Unable to resolve `let` on line #{line}."
-      when 1
-        lets.first
+      if candidates.one?
+        candidates.first
       else
-        fail "Multiple `let`s on line #{line}. Unable to resolve a specific `let`."
+        warn Color.yellow("Unable to resolve `#{target_selector}` on line #{line}.")
       end
     end
 
     private
 
-    def find_methods(line, target)
+    def find_methods(target_selector, line)
       send_nodes(line).select do |node|
         _receiver, selector = *node
 
-        selector.equal?(target)
+        selector.equal?(target_selector)
       end
     end
 

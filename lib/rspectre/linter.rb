@@ -16,7 +16,7 @@ module RSpectre
 
       return unless file.to_s.start_with?(File.realpath(Dir.pwd))
 
-      raw_node = node_map(file).find_let(line)
+      raw_node = find_node(node_map(file), line)
 
       if raw_node
         node = RSpectre::Node.new(file, line, raw_node)
