@@ -5,7 +5,7 @@ RSpec.shared_examples 'highlighted offenses' do |src|
     rspectre_path = File.expand_path('bin/rspectre')
 
     Dir.chdir(File.dirname(spec_file.path)) do
-      `#{rspectre_path} #{spec_file.path}`
+      Open3.capture3("#{rspectre_path} #{spec_file.path}")
     end
   end
 
@@ -51,8 +51,11 @@ RSpec.shared_examples 'highlighted offenses' do |src|
 
   it 'highlights the offenses' do
     aggregate_failures do
-      offenses = lint.split("\n").each_slice(4)
+      stdout, _stderr, status = lint
 
+      offenses = stdout.split("\n").each_slice(4)
+
+      expect(status.to_i).to be > 0
       expect(offenses.count).to eql(expected_offenses.count)
 
       offenses.zip(expected_offenses) do |message_parts, (offense, description)|

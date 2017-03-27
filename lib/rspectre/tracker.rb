@@ -17,7 +17,10 @@ module RSpectre
     end
 
     def report_offenses
-      offenses.each(&:warn)
+      if offenses.any?
+        offenses.each(&:warn)
+        abort
+      end
     end
 
     def offenses

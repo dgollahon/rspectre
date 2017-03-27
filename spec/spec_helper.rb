@@ -3,6 +3,9 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 $LOAD_PATH.unshift(File.expand_path('../spec', __dir__))
 
+require 'open3'
+require 'tempfile'
+
 require 'rspectre'
 
 require 'shared/highlighted_offenses'
