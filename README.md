@@ -8,7 +8,7 @@ This project is still a work in progress.
 
 - [x] Detect unused `let` statements
 - [x] Detect unused `subject` statements
-- [ ] Detect unused `shared_examples` and `shared_contexts`
+- [x] Detect unused `shared_examples` and `shared_contexts`
 - [ ] Detect unused double arguments
 - [ ] Automatically delete dead code
 
