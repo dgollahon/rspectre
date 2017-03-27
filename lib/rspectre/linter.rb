@@ -8,7 +8,7 @@ module RSpectre
       RSpec::Core::ExampleGroup
     end
 
-    def self.register(locations)
+    def self.register(selector, locations)
       location = locations.first
 
       file = File.realpath(location.path)
@@ -16,7 +16,7 @@ module RSpectre
 
       return unless file.to_s.start_with?(File.realpath(Dir.pwd))
 
-      raw_node = find_node(node_map(file), line)
+      raw_node = node_map(file).find_method(selector, line)
 
       if raw_node
         node = RSpectre::Node.new(file, line, raw_node)
