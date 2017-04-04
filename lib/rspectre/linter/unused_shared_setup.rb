@@ -12,7 +12,7 @@ module RSpectre
         # Overwrite the class method using define_singleton_method
         receiver.send(:define_singleton_method, method) do |name, *args, &block|
           # When we can locate the source of the node, tag it
-          if (node = UnusedSharedSetup.register(method, caller_locations) { |node| node })
+          if (node = UnusedSharedSetup.register(method, caller_locations))
             # And call the orignal
             original_method.(name, *args) do |*shared_args|
               # But record that it was used in a `before`
@@ -47,7 +47,7 @@ module RSpectre
       # this duplication (which is effectively what happens here anyway, i think), but this works
       # for now.
       def example_group.shared_examples(name, *args, &block)
-        if (node = UnusedSharedSetup.register(:shared_examples, caller_locations) { |node| node })
+        if (node = UnusedSharedSetup.register(:shared_examples, caller_locations))
           super(name, *args) do |*shared_args|
             before { UnusedSharedSetup.record(node) }
 
@@ -59,7 +59,7 @@ module RSpectre
       end
 
       def example_group.shared_examples_for(name, *args, &block)
-        if (node = UnusedSharedSetup.register(:shared_examples_for, caller_locations) { |node| node })
+        if (node = UnusedSharedSetup.register(:shared_examples_for, caller_locations))
           super(name, *args) do |*shared_args|
             before { UnusedSharedSetup.record(node) }
 
@@ -71,7 +71,7 @@ module RSpectre
       end
 
       def example_group.shared_context(name, *args, &block)
-        if (node = UnusedSharedSetup.register(:shared_context, caller_locations) { |node| node })
+        if (node = UnusedSharedSetup.register(:shared_context, caller_locations))
           super(name, *args) do |*shared_args|
             before { UnusedSharedSetup.record(node) }
 
