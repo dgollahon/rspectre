@@ -2,9 +2,7 @@
 
 module RSpectre
   class Node
-    include Concord.new(:file, :line, :node)
-
-    public :file, :line
+    include Concord::Public.new(:file, :line, :node)
 
     def start_column
       location.column + 1
@@ -29,7 +27,7 @@ module RSpectre
     end
 
     def location
-      node.location
+      node.children.first.location
     end
   end
 end

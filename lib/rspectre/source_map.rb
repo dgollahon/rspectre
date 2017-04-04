@@ -32,15 +32,16 @@ module RSpectre
     private
 
     def find_methods(target_selector, line)
-      send_nodes(line).select do |node|
-        _receiver, selector = *node
+      block_nodes(line).select do |node|
+        send, = *node
+        _receiver, selector = *send
 
         selector.equal?(target_selector)
       end
     end
 
-    def send_nodes(line)
-      map.fetch(line, []).select { |node| node.type.equal?(:send) }
+    def block_nodes(line)
+      map.fetch(line, []).select { |node| node.type.equal?(:block) }
     end
 
     class Null < self
