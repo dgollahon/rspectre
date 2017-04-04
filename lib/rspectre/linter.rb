@@ -21,7 +21,11 @@ module RSpectre
       if raw_node
         node = RSpectre::Node.new(file, line, raw_node)
         TRACKER.register(self::TAG, node)
-        yield node
+        if block_given?
+          yield node
+        else
+          return node
+        end
       end
     end
 
