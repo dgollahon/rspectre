@@ -9,7 +9,6 @@ module RSpectre
         walk(parsed_source) { |node| map.add(node) }
 
         map.freeze
-
       rescue ::Parser::SyntaxError => error
         warn Color.yellow("Warning! Skipping #{file} due to parsing error!")
         warn error.diagnostic.render
