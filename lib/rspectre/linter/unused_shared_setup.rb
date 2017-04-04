@@ -5,12 +5,12 @@ module RSpectre
     class UnusedSharedSetup < self
       TAG = 'UnusedSharedSetup'
 
-      def self.redefine_shared(receiver, method)
+      def self.redefine_shared(receiver, method) # rubocop:disable Metrics/MethodLength
         # Capture the original class method
         original_method = receiver.method(method)
 
         # Overwrite the class method using define_singleton_method
-        receiver.send(:define_singleton_method, method) do |name, *args, &block|
+        receiver.__send__(:define_singleton_method, method) do |name, *args, &block|
           # When we can locate the source of the node, tag it
           if (node = UnusedSharedSetup.register(method, caller_locations))
             # And call the orignal
