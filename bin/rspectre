@@ -3,8 +3,19 @@
 
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
-require 'bundler/setup'
+require 'shellwords'
+require 'optparse'
 
 require 'rspectre'
 
-RSpectre::Runner.new(*ARGV).lint
+options = { rspec: [] }
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: rspectre [options]"
+
+  opts.on('--rspec RSPEC_ARGS', 'Arguments to feed to RSpec.') do |value|
+    options[:rspec] = value.shellsplit
+  end
+end.parse(ARGV)
+
+RSpectre::Runner.new(options.fetch(:rspec)).lint

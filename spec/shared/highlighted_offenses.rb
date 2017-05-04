@@ -5,7 +5,7 @@ RSpec.shared_examples 'highlighted offenses' do |src|
     rspectre_path = File.expand_path('bin/rspectre')
 
     Dir.chdir(File.dirname(spec_file.path)) do
-      Open3.capture3("#{rspectre_path} #{spec_file.path}")
+      Open3.capture3("#{rspectre_path} --rspec #{spec_file.path}")
     end
   end
 
