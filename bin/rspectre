@@ -8,7 +8,7 @@ require 'optparse'
 
 require 'rspectre'
 
-options = { rspec: [] }
+options = { rspec: %w[spec] }
 
 OptionParser.new do |opts|
   opts.banner = "Usage: rspectre [options]"
