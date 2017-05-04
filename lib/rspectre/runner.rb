@@ -6,9 +6,7 @@ module RSpectre
 
     EXIT_SUCCESS = 0
 
-    def initialize(*rspec_arguments)
-      rspec_arguments << 'spec' if rspec_arguments.empty?
-
+    def initialize(rspec_arguments)
       super(
         RSpec::Core::Runner.new(RSpec::Core::ConfigurationOptions.new(rspec_arguments)),
         RSpec.world
