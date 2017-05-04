@@ -11,6 +11,7 @@ require 'parser/current'
 require 'rspec'
 require 'unparser'
 
+require 'rspectre/auto_corrector'
 require 'rspectre/color'
 require 'rspectre/node'
 require 'rspectre/offense'

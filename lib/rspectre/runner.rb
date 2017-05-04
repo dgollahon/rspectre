@@ -2,30 +2,39 @@
 
 module RSpectre
   class Runner
-    include Concord.new(:runner, :world)
+    include Concord.new(:rspec_arguments, :autocorrect)
 
     EXIT_SUCCESS = 0
 
-    def initialize(rspec_arguments)
-      super(
-        RSpec::Core::Runner.new(RSpec::Core::ConfigurationOptions.new(rspec_arguments)),
-        RSpec.world
-      )
-
-      runner.setup($stderr, StringIO.new)
+    def lint
+      if runner.run_specs(RSpec.world.ordered_example_groups).equal?(EXIT_SUCCESS)
+        handle_offenses
+      else
+        exit_with_error
+      end
     end
 
-    def lint
-      if runner.run_specs(world.ordered_example_groups).equal?(EXIT_SUCCESS)
-        TRACKER.report_offenses
-      else
-        abort(
-          Color.red(
-            'Running the specs failed. Either your tests do not pass '\
-            'normally or this is a bug in RSpectre.'
-          )
-        )
+    private
+
+    def handle_offenses
+      if TRACKER.offenses?
+        autocorrect ? TRACKER.correct_offenses : TRACKER.report_offenses
       end
+    end
+
+    def exit_with_error
+      abort(
+        Color.red(
+          'Running the specs failed. Either your tests do not pass '\
+          'normally or this is a bug in RSpectre.'
+        )
+      )
+    end
+
+    def runner
+      rspec_config = RSpec::Core::ConfigurationOptions.new(rspec_arguments)
+
+      RSpec::Core::Runner.new(rspec_config).tap { |runner| runner.setup($stderr, StringIO.new) }
     end
   end # Rspec
 end
