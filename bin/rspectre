@@ -8,7 +8,7 @@ require 'optparse'
 
 require 'rspectre'
 
-options = { rspec: %w[--fail-fast spec], autocorrect: false }
+options = { rspec: %w[--fail-fast spec], :'auto-correct' => false }
 
 OptionParser.new do |opts|
   opts.banner = 'Usage: rspectre [options]'
@@ -18,15 +18,15 @@ OptionParser.new do |opts|
   end
 
   opts.on(
-    '--autocorrect',
-    'Enables autocorrect.',
-    'When autocorrect is enabled, rspectre will modify your source files in place and delete any'\
+    '--auto-correct',
+    'Enables auto-correct.',
+    'When auto-correct is enabled, rspectre will modify your source files in place and delete any'\
     ' unused test setup.'
   ) do |value|
-    options[:autocorrect] = value
+    options[:'auto-correct'] = value
   end
 end.parse(ARGV)
 
-rspec, autocorrect = options.fetch_values(:rspec, :autocorrect)
+rspec, auto_correct = options.fetch_values(:rspec, :'auto-correct')
 
-RSpectre::Runner.new(rspec, autocorrect).lint
+RSpectre::Runner.new(rspec, auto_correct).lint

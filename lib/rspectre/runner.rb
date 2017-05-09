@@ -2,7 +2,7 @@
 
 module RSpectre
   class Runner
-    include Concord.new(:rspec_arguments, :autocorrect)
+    include Concord.new(:rspec_arguments, :auto_correct)
 
     EXIT_SUCCESS = 0
 
@@ -18,7 +18,7 @@ module RSpectre
 
     def handle_offenses
       if TRACKER.offenses?
-        autocorrect ? TRACKER.correct_offenses : TRACKER.report_offenses
+        auto_correct ? TRACKER.correct_offenses : TRACKER.report_offenses
       end
     end
 
