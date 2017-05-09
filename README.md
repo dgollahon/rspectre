@@ -2,7 +2,7 @@
 
 `rspectre` is a tool for hunting the dead and errant code haunting your test suite. It picks up where static analysis tools like [rubocop-rspec](https://github.com/backus/rubocop-rspec) leave off by analyzing your test suite as it runs.
 
-This project is still a bit of a work in progress. In particular, `--autocorrect` is still experimental and may leave behind awkward whitespace or otherwise misbehave. YMMV.
+This project is still a bit of a work in progress. In particular, `--auto-correct` is still experimental and may leave behind awkward whitespace or otherwise misbehave. YMMV.
 
 Happy testing!
 
@@ -46,10 +46,10 @@ will invoke your `rspec` test suite and check for various offenses. It runs `rsp
 $ rspectre --rspec '--some-rspec-flag tests'
 ```
 
-If you want to automatically delete dead code that `rspectre` finds, simply use the `--autocorrect` flag.
+If you want to automatically delete dead code that `rspectre` finds, simply use the `--auto-correct` flag.
 
 ```shell
-$ rspectre --autocorrect
+$ rspectre --auto-correct
 ```
 
 ##### NOTE
@@ -58,6 +58,6 @@ You should generally run your _entire_ test suite with `rspectre`. `rspectre` in
 
 ### Contributing
 
-Please try out `rspectre` on your codebase--I'd love general feedback and bug reports. If you find something weird or `--autocorrect` eats your dog along with your homework, open an issue!
+Please try out `rspectre` on your codebase--I'd love general feedback and bug reports. If you find something weird or `--auto-correct` eats your dog along with your homework, open an issue!
 
 Also, if you have an idea for something you think `rspectre` might be able to reasonably detect, feel free to propose it in an issue as well.
