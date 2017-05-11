@@ -1,5 +1,7 @@
 # RSpectre
 
+[![CircleCI](https://circleci.com/gh/dgollahon/rspectre/tree/master.svg?style=shield)](https://circleci.com/gh/dgollahon/rspectre/tree/master)
+
 `rspectre` is a tool for hunting the dead and errant code haunting your test suite. It picks up where static analysis tools like [rubocop-rspec](https://github.com/backus/rubocop-rspec) leave off by analyzing your test suite as it runs.
 
 This project is still a bit of a work in progress. In particular, `--auto-correct` is still experimental and may leave behind awkward whitespace or otherwise misbehave. YMMV.

@@ -8,7 +8,7 @@ require 'optparse'
 
 require 'rspectre'
 
-options = { rspec: %w[--fail-fast spec], :'auto-correct' => false }
+options = { rspec: %w[--fail-fast spec], 'auto-correct': false }
 
 OptionParser.new do |opts|
   opts.banner = 'Usage: rspectre [options]'
