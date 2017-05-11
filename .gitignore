@@ -6,3 +6,6 @@ Gemfile.lock
 
 # MAC OS
 .DS_Store
+
+# CodeClimate / Simplecov reporting
+coverage
