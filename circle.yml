@@ -7,7 +7,10 @@ dependencies:
 machine:
   ruby:
     version: '2.4.1'
+  environment:
+    CODECLIMATE_REPO_TOKEN: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
 test:
   override:
     - bundle exec rubocop
     - bundle exec rspec
+    - bundle exec codeclimate-test-reporter
