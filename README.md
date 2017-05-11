@@ -1,9 +1,9 @@
 # RSpectre
 
 [![CircleCI](https://circleci.com/gh/dgollahon/rspectre/tree/master.svg?style=shield)](https://circleci.com/gh/dgollahon/rspectre/tree/master)
-[![Gem Version](https://badge.fury.io/rb/rspectre.svg)](https://badge.fury.io/rb/rspectre)
 [![Code Climate](https://codeclimate.com/github/dgollahon/rspectre/badges/gpa.svg)](https://codeclimate.com/github/dgollahon/rspectre)
 [![Test Coverage](https://codeclimate.com/github/dgollahon/rspectre/badges/coverage.svg)](https://codeclimate.com/github/dgollahon/rspectre/coverage)
+[![Gem Version](https://badge.fury.io/rb/rspectre.svg)](https://badge.fury.io/rb/rspectre)
 
 `rspectre` is a tool for hunting the dead and errant code haunting your test suite. It picks up where static analysis tools like [rubocop-rspec](https://github.com/backus/rubocop-rspec) leave off by analyzing your test suite as it runs.
 
@@ -36,6 +36,10 @@ gem 'rspectre'
 ```
 
 to your Gemfile.
+
+##### Supported Ruby Versions
+
+`rspectre` currently supports Ruby 2.3 and 2.4. I may add 2.2 support in the future.
 
 ### Usage
 
