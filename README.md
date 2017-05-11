@@ -1,6 +1,7 @@
 # RSpectre
 
 [![CircleCI](https://circleci.com/gh/dgollahon/rspectre/tree/master.svg?style=shield)](https://circleci.com/gh/dgollahon/rspectre/tree/master)
+[![Gem Version](https://badge.fury.io/rb/rspectre.svg)](https://badge.fury.io/rb/rspectre)
 
 `rspectre` is a tool for hunting the dead and errant code haunting your test suite. It picks up where static analysis tools like [rubocop-rspec](https://github.com/backus/rubocop-rspec) leave off by analyzing your test suite as it runs.
 
