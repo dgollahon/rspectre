@@ -27,6 +27,7 @@ module RSpectre
     end
 
     def to_s
+      # rubocop:disable Style/IndentHeredoc
       <<~DOC
 
           #{source_id}: #{offense_type}: #{description}

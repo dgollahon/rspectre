@@ -1,0 +1,13 @@
+---
+dependencies:
+  pre:
+    - echo Y | rvm @global do gem uninstall bundler
+    - gem update --system
+    - gem install bundler --pre
+machine:
+  ruby:
+    version: '2.4.1'
+test:
+  override:
+    - bundle exec rubocop
+    - bundle exec rspec
