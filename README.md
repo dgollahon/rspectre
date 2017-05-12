@@ -11,6 +11,46 @@ This project is still a bit of a work in progress. In particular, `--auto-correc
 
 Happy testing!
 
+### The Tool In Action
+
+It can sometimes be difficult to determine where and if test setup is used--especially if it exists across multiple files. Since `rspectre` probes your test suite while it runs, it can reliably detect a number of common mistakes.
+
+##### Example Spec
+
+```ruby
+RSpec.describe 'example' do
+  subject { 'i get overridden later' }
+
+  let(:foo) { 'an unused foo' }
+
+  shared_examples 'unused example' do
+    it 'is useless since it is not included' do
+      expect(2 + 2).to eql(5)
+    end
+  end
+
+  shared_examples 'used' do
+    let(:bar) { 'an unused bar' }
+
+    it 'asserts something' do
+      expect(subject).to eql(baz)
+    end
+  end
+
+  context 'some context' do
+    subject { 'x' }
+
+    let(:baz) { 'x' }
+
+    include_examples 'used'
+  end
+end
+```
+
+##### `rspectre` output
+
+![tool output](http://i.imgur.com/lbowIrc.png)
+
 ### Planned Features
 
 - [x] Detect unused `let` statements
