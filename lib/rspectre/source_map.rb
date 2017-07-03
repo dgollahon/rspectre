@@ -20,25 +20,15 @@ module RSpectre
     end
 
     def find_method(target_selector, line)
-      candidates = find_methods(target_selector, line)
-
-      if candidates.one?
-        candidates.first
-      else
-        warn Color.yellow("Unable to resolve `#{target_selector}` on line #{line}.")
-      end
-    end
-
-    private
-
-    def find_methods(target_selector, line)
       block_nodes(line).select do |node|
         send, = *node
         _receiver, selector = *send
 
         selector.equal?(target_selector)
-      end
+      end.first
     end
+
+    private
 
     def block_nodes(line)
       map.fetch(line, []).select { |node| node.type.equal?(:block) }
