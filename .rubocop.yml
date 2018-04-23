@@ -1,21 +1,46 @@
 ---
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.3
   DisplayCopNames: true
 require:
   - rubocop-rspec
-Style/Documentation:
-  Enabled: false
-Style/ExtraSpacing:
+Layout/AlignHash:
+  EnforcedColonStyle: table
+Layout/ExtraSpacing:
   AllowForAlignment: true
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+Layout/FirstMethodParameterLineBreak:
+  Enabled: true
+Layout/IndentArray:
+  EnforcedStyle: consistent
+Layout/IndentHash:
+  EnforcedStyle: consistent
+Layout/MultilineArrayBraceLayout:
+  Enabled: true
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: new_line
+  Enabled: true
+Layout/MultilineHashBraceLayout:
+  Enabled: true
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: true
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/MultilineMethodDefinitionBraceLayout:
+  Enabled: true
 Metrics/LineLength:
   Max: 100
 Metrics/BlockLength:
   Exclude:
   # Ignore RSpec DSL
   - spec/**/*
-Style/IfUnlessModifier:
-  MaxLineLength: 100
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
 Style/Next:
   EnforcedStyle: always
 Style/PercentLiteralDelimiters:
@@ -41,39 +66,14 @@ Style/Send:
   Enabled: true
 Style/AutoResourceCleanup:
   Enabled: true
-Style/FirstArrayElementLineBreak:
-  Enabled: true
-Style/FirstHashElementLineBreak:
-  Enabled: true
-Style/FirstMethodArgumentLineBreak:
-  Enabled: true
-Style/FirstMethodParameterLineBreak:
-  Enabled: true
-Style/MultilineArrayBraceLayout:
-  Enabled: true
-Style/MultilineAssignmentLayout:
-  EnforcedStyle: new_line
-  Enabled: true
-Style/MultilineHashBraceLayout:
-  Enabled: true
-Style/MultilineMethodCallBraceLayout:
-  Enabled: true
-Style/MultilineMethodDefinitionBraceLayout:
-  Enabled: true
 Style/OptionHash:
   Enabled: true
 Style/StringMethods:
   Enabled: true
-Style/IndentArray:
-  EnforcedStyle: consistent
-Style/IndentHash:
-  EnforcedStyle: consistent
-MultilineMethodCallIndentation:
-  EnforcedStyle: indented
 Style/Alias:
   EnforcedStyle: prefer_alias_method
-Style/AlignHash:
-  EnforcedColonStyle: table
+Style/Documentation:
+  Enabled: false
 Style/SignalException:
   EnforcedStyle: semantic
 Style/SingleLineBlockParams:
