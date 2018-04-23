@@ -36,5 +36,5 @@ module RSpectre
 
       RSpec::Core::Runner.new(rspec_config).tap { |runner| runner.setup($stderr, StringIO.new) }
     end
-  end # Rspec
+  end
 end

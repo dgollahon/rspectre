@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../lib/rspectre/version', __FILE__)
+require File.expand_path('lib/rspectre/version', __dir__)
 
 Gem::Specification.new do |gem|
   gem.name        = 'rspectre'
@@ -22,6 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('unparser', '~> 0.2')
 
   gem.add_development_dependency('pry',           '~> 0.10')
-  gem.add_development_dependency('rubocop',       '~> 0.47')
-  gem.add_development_dependency('rubocop-rspec', '~> 1.15')
+  gem.add_development_dependency('rubocop',       '~> 0.55')
+  gem.add_development_dependency('rubocop-rspec', '~> 1.25')
 end
