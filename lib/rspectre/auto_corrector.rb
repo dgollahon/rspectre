@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RSpectre
-  class AutoCorrector < Parser::Rewriter
+  class AutoCorrector < Parser::TreeRewriter
     include Concord.new(:filename, :nodes, :buffer)
 
     def initialize(filename, nodes)
