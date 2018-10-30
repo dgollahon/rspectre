@@ -6,6 +6,7 @@ require:
   - rubocop-rspec
 Layout/AlignHash:
   EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
 Layout/ExtraSpacing:
   AllowForAlignment: true
 Layout/FirstArrayElementLineBreak:
