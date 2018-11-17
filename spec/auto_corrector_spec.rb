@@ -25,6 +25,11 @@ RSpec.describe RSpectre::AutoCorrector do
     spec_file
   end
 
+  after do
+    spec_file.close
+    spec_file.unlink
+  end
+
   it 'corrects the selected offenses' do
     aggregate_failures do
       expect do
@@ -69,10 +74,5 @@ RSpec.describe RSpectre::AutoCorrector do
         RUBY
       end
     end
-  end
-
-  after do
-    spec_file.close
-    spec_file.unlink
   end
 end
