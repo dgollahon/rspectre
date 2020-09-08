@@ -19,7 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('concord',  '~> 0.1')
   gem.add_runtime_dependency('parser',   '~> 2.3')
   gem.add_runtime_dependency('rspec',    '~> 3.0')
-  gem.add_runtime_dependency('unparser', '~> 0.2')
 
   gem.add_development_dependency('pry',           '~> 0.10')
   gem.add_development_dependency('rubocop',       '~> 0.60.0')
