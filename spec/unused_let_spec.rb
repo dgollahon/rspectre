@@ -8,6 +8,9 @@ RSpec.describe RSpectre do
       let(:unused) { 'noop' }
       ^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
 
+      let(:unused_binary) { "\\xff".b }
+      ^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
+
       let(:unused_compound) { 1 + 1; 'noop' }
       ^^^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
 
