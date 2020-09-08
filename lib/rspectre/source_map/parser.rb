@@ -28,7 +28,10 @@ module RSpectre
       end
 
       def parsed_source
-        ::Parser::CurrentRuby.parse(raw_source, file)
+        parser = ::Parser::CurrentRuby.new(PermissiveASTBuilder.new)
+        buffer = ::Parser::Source::Buffer.new(file, source: raw_source)
+
+        parser.parse(buffer)
       end
 
       def raw_source
