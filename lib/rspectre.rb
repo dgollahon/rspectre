@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
 require 'pathname'
 require 'set'
+require 'stringio'
 
 require 'anima'
 require 'concord'
