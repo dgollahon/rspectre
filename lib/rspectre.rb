@@ -28,4 +28,5 @@ require 'rspectre/linter/unused_shared_setup'
 
 module RSpectre
   TRACKER = Tracker.new
+  LIB_PATH = Pathname.new(File.expand_path('../lib', __dir__))
 end
