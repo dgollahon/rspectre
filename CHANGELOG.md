@@ -2,6 +2,7 @@
 
 ## [Master (Unreleased)]
 
+- Drop support for ruby 2.3 and 2.4 - [#34](https://github.com/dgollahon/rspectre/pull/34) ([@dgollahon])
 - Fixed a bug where `stringio` was not being required - [#32](https://github.com/dgollahon/rspectre/pull/32) ([@dgollahon])
 - Removed `unparser` dependency - [#31](https://github.com/dgollahon/rspectre/pull/31) ([@dgollahon])
 
