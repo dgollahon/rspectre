@@ -8,7 +8,7 @@ module RSpectre
       RSpec::Core::ExampleGroup
     end
 
-    def self.register(selector, locations) # rubocop:disable Metrics/MethodLength
+    def self.register(selector, locations)
       location = locations.first
 
       file = File.realpath(location.path)

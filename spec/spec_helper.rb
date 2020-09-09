@@ -12,6 +12,7 @@ require 'tempfile'
 require 'rspectre'
 
 require 'shared/highlighted_offenses'
+require 'shared/rspectre_runner'
 
 RSpec.configure do |config|
   # Forbid RSpec from monkey patching any of our objects

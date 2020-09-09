@@ -1,26 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'highlighted offenses' do |src|
-  subject(:lint) do
-    rspectre_path = File.expand_path('bin/rspectre')
+RSpec.shared_examples 'highlighted offenses' do |source|
+  include_context 'rspectre runner'
 
-    Dir.chdir(File.dirname(spec_file.path)) do
-      Open3.capture3("#{rspectre_path} --rspec #{spec_file.path}")
-    end
-  end
-
-  let(:spec_file) do
-    Tempfile.new.tap do |file|
-      file.write(src.gsub(/^\s*\^+.+\n/, ''))
-      file.flush
-    end
-  end
-
-  let(:expected_offenses) do
+  def expected_offenses(source, spec_file) # rubocop:disable Metrics/MethodLength
     line_count = 0
     last_line  = ''
 
-    src.split("\n").map do |current_line|
+    source.split("\n").map do |current_line|
       header_pattern = /^(?<leading_space>\s*)(?<highlight>\^+)\s(?<tag>\w+):\s(?<message>.+)$/
 
       if (match = current_line.match(header_pattern))
@@ -45,42 +32,34 @@ RSpec.shared_examples 'highlighted offenses' do |src|
     end.compact
   end
 
-  before do
-    spec_file
-  end
-
-  it 'highlights the offenses' do
+  it 'highlights the expected offenses' do
     aggregate_failures do
-      stdout, _stderr, status = lint
+      run_rspectre(source) do |(stdout, _stderr, status), file|
+        offenses = stdout.split("\n").each_slice(4)
+        expected_offenses = expected_offenses(source, file)
 
-      offenses = stdout.split("\n").each_slice(4)
+        expect(status.to_i).to be > 0
+        expect(offenses.count).to eql(expected_offenses.count)
 
-      expect(status.to_i).to be > 0
-      expect(offenses.count).to eql(expected_offenses.count)
+        offenses.zip(expected_offenses) do |message_parts, (offense, description)|
+          expected_parts = offense.to_s.split("\n")
 
-      offenses.zip(expected_offenses) do |message_parts, (offense, description)|
-        expected_parts = offense.to_s.split("\n")
+          expect(message_parts).to eql(expected_parts), <<~MSG
+            Expected:
+              #{expected_parts[0]}
+              #{expected_parts[1]}
+              #{expected_parts[2]}
+              #{expected_parts[3]}
+            Found:
+              #{message_parts[0]}
+              #{message_parts[1]}
+              #{message_parts[2]}
+              #{message_parts[3]}
+          MSG
 
-        expect(message_parts).to eql(expected_parts), <<~MSG
-          Expected:
-            #{expected_parts[0]}
-            #{expected_parts[1]}
-            #{expected_parts[2]}
-            #{expected_parts[3]}
-          Found:
-            #{message_parts[0]}
-            #{message_parts[1]}
-            #{message_parts[2]}
-            #{message_parts[3]}
-        MSG
-
-        expect(offense.description).to eql(description)
+          expect(offense.description).to eql(description)
+        end
       end
     end
-  end
-
-  after do
-    spec_file.close
-    spec_file.unlink
   end
 end

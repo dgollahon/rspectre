@@ -34,27 +34,31 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Layout/MultilineMethodDefinitionBraceLayout:
   Enabled: true
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 20
 Metrics/LineLength:
   Max: 100
 Metrics/BlockLength:
   Exclude:
-  # Ignore RSpec DSL
-  - spec/**/*
+    # Ignore RSpec DSL
+    - spec/**/*
 Naming/UncommunicativeMethodParamName:
   Enabled: false
 Style/Next:
   EnforcedStyle: always
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    '%i': '[]'
-    '%I': '[]'
-    '%q': '{}'
-    '%Q': '{}'
-    '%r': '{}'
-    '%s': ()
-    '%w': '[]'
-    '%W': '[]'
-    '%x': ()
+    "%i": "[]"
+    "%I": "[]"
+    "%q": "{}"
+    "%Q": "{}"
+    "%r": "{}"
+    "%s": ()
+    "%w": "[]"
+    "%W": "[]"
+    "%x": ()
 Style/TrivialAccessors:
   ExactNameMatch: false
 Style/SymbolArray:
@@ -88,6 +92,8 @@ Style/LambdaCall:
 RSpec/MessageExpectation:
   Enabled: true
 RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
   Enabled: false
 RSpec/VerifiedDoubles:
   IgnoreSymbolicNames: true
