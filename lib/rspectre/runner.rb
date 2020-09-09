@@ -6,8 +6,13 @@ module RSpectre
 
     EXIT_SUCCESS = 0
 
+    def initialize(*)
+      super
+      @rspec_output = StringIO.new
+    end
+
     def lint
-      if runner.run_specs(RSpec.world.ordered_example_groups).equal?(EXIT_SUCCESS)
+      if run_specs.equal?(EXIT_SUCCESS)
         handle_offenses
       else
         exit_with_error
@@ -15,6 +20,8 @@ module RSpectre
     end
 
     private
+
+    attr_reader :rspec_output
 
     def handle_offenses
       if TRACKER.offenses?
@@ -24,19 +31,29 @@ module RSpectre
       end
     end
 
+    # The version of `rubocop` we are currently using has an issue with leading whitespace in
+    # heredocs.
+    # rubocop:disable Layout/EmptyLinesAroundArguments
     def exit_with_error
+      rspec_output.rewind
+
       abort(
         Color.red(
           'Running the specs failed. Either your tests do not pass '\
           'normally or this is a bug in RSpectre.'
-        )
+        ) + <<~TEXT
+
+
+          RSpec Output:
+          ---
+          #{rspec_output.read}
+        TEXT
       )
     end
+    # rubocop:enable Layout/EmptyLinesAroundArguments
 
-    def runner
-      rspec_config = RSpec::Core::ConfigurationOptions.new(rspec_arguments)
-
-      RSpec::Core::Runner.new(rspec_config).tap { |runner| runner.setup($stderr, StringIO.new) }
+    def run_specs
+      RSpec::Core::Runner.run(rspec_arguments, $stderr, rspec_output)
     end
   end
 end

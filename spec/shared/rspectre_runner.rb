@@ -3,7 +3,7 @@
 RSpec.shared_context 'rspectre runner' do # rubocop:disable RSpec/ContextWording
   def run_rspectre(source)
     spec_file =
-      Tempfile.new.tap do |file|
+      Tempfile.new(%w[spec_file .rb]).tap do |file|
         file.write(source.gsub(/^\s*\^+.+\n/, ''))
         file.flush
       end
