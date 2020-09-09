@@ -79,7 +79,7 @@ to your Gemfile.
 
 ##### Supported Ruby Versions
 
-`rspectre` currently supports Ruby 2.3 and 2.4. I may add 2.2 support in the future.
+`rspectre` currently supports Ruby 2.5+
 
 ### Usage
 

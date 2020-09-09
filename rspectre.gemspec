@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'http://github.com/dgollahon/rspectre'
   gem.license     = 'MIT'
 
-  gem.required_ruby_version = '>= 2.3'
+  gem.required_ruby_version = '>= 2.5'
 
   gem.add_runtime_dependency('anima',    '~> 0.3')
   gem.add_runtime_dependency('concord',  '~> 0.1')
