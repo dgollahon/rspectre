@@ -19,6 +19,8 @@ module RSpectre
     def handle_offenses
       if TRACKER.offenses?
         auto_correct ? TRACKER.correct_offenses : TRACKER.report_offenses
+      else
+        puts 'No unused test setup detected.'
       end
     end
 

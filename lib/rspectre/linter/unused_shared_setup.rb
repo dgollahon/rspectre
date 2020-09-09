@@ -5,7 +5,7 @@ module RSpectre
     class UnusedSharedSetup < self
       TAG = 'UnusedSharedSetup'
 
-      def self.redefine_shared(receiver, method) # rubocop:disable Metrics/MethodLength
+      def self.redefine_shared(receiver, method)
         # Capture the original class method
         original_method = receiver.method(method)
 

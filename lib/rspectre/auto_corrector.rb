@@ -37,7 +37,7 @@ module RSpectre
       )
     end
 
-    def range_end(node) # rubocop:disable Metrics/MethodLength
+    def range_end(node)
       location = node.location.expression
 
       last_line    = location.last_line
