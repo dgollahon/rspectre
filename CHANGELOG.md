@@ -2,6 +2,11 @@
 
 ## [Master (Unreleased)]
 
+## [0.0.4]
+
+- Fixed `parser` version constraint - [#43](https://github.com/dgollahon/rspectre/pull/43) ([@dgollahon]) (+ thanks @chiastolite)
+- Re-enabled diagnostic warnings -[#39](https://github.com/dgollahon/rspectre/pull/39) ([@dgollahon])
+
 ## [0.0.3]
 
 - Added rspec output if the specs fail during an `rspectre` run - [#36](https://github.com/dgollahon/rspectre/pull/36) ([@dgollahon])
