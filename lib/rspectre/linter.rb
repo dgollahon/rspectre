@@ -24,7 +24,7 @@ module RSpectre
         if block_given?
           yield node
         else
-          return node
+          node
         end
       end
     end

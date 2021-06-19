@@ -7,7 +7,6 @@ Gem::Specification.new do |gem|
   gem.version     = RSpectre::VERSION
   gem.summary     = 'A tool for linting RSpec test suites.'
   gem.authors     = ['Daniel Gollahon']
-  gem.date        = '2017-03-25'
   gem.files       = `git ls-files lib`.split("\n")
   gem.executables = ['rspectre']
   gem.homepage    = 'http://github.com/dgollahon/rspectre'
@@ -20,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('parser',   '>= 2.5')
   gem.add_runtime_dependency('rspec',    '~> 3.0')
 
-  gem.add_development_dependency('pry',           '~> 0.10')
-  gem.add_development_dependency('rubocop',       '~> 0.60.0')
-  gem.add_development_dependency('rubocop-rspec', '~> 1.30.1')
+  gem.add_development_dependency('pry',           '~> 0.14')
+  gem.add_development_dependency('rubocop',       '~> 1.17.0')
+  gem.add_development_dependency('rubocop-rspec', '~> 2.4.0')
 end

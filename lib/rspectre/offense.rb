@@ -26,16 +26,14 @@ module RSpectre
       puts to_s
     end
 
-    # rubocop:disable Layout/IndentHeredoc
     def to_s
       <<~DOC
 
-          #{source_id}: #{offense_type}: #{description}
-              #{source_line}
-              #{highlight}
+        #{source_id}: #{offense_type}: #{description}
+            #{source_line}
+            #{highlight}
       DOC
     end
-    # rubocop:enable Layout/IndentHeredoc
 
     def description
       DESCRIPTIONS.fetch(type)
