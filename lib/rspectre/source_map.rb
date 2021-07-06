@@ -29,6 +29,42 @@ module RSpectre
       end
     end
 
+    def find_kwarg(target_selector, kwarg_name, line)
+      candidates =
+        map.fetch(line, []).select { |node| node.type.equal?(:send) }
+          .select do |node|
+            _receiver, selector = *node;
+            selector.equal?(target_selector)
+          end
+
+      # TODO: if ambiguous, could check for kwarg before asserting to disambiguate
+      candidate =
+        if candidates.one?
+          candidates.first
+        else
+          warn Color.yellow("Unable to resolve `#{target_selector}` on line #{line}. XX")
+        end
+
+      _receiver, _selector, _name, stubs_node = *candidate
+
+      unless stubs_node.type.equal?(:hash)
+        warn Color.yellow("oh shit")
+        return
+      end
+
+      stubs_node.children.each do |node|
+        if node.type.equal?(:pair)
+          kwarg_name_node = node.children.first
+          if kwarg_name_node.children.first.eql?(kwarg_name)
+            return kwarg_name_node
+          end
+        end
+      end
+
+      warn Color.yellow("oh shit 2")
+      return
+    end
+
     private
 
     def find_methods(target_selector, line)

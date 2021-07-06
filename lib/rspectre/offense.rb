@@ -5,10 +5,11 @@ module RSpectre
     include Anima.new(:file, :line, :source_line, :start_column, :end_column, :type)
 
     DESCRIPTIONS = {
-      'UnusedLet'         => 'Unused `let` definition.',
-      'UnusedSubject'     => 'Unused `subject` definition.',
-      'UnusedSharedSetup' => 'Unused `shared_examples`, `shared_examples_for`, or'\
-                             ' `shared_context` definition.'
+      'UnusedLet'            => 'Unused `let` definition.',
+      'UnusedDoubleMethod'   => 'Unused double method.',
+      'UnusedSubject'        => 'Unused `subject` definition.',
+      'UnusedSharedSetup'    => 'Unused `shared_examples`, `shared_examples_for`, or'\
+                                 ' `shared_context` definition.'
     }.freeze
 
     def self.parse(type, node)
