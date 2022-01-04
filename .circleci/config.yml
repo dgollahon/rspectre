@@ -5,10 +5,20 @@ jobs:
     docker:
       - image: circleci/ruby:2.5.9
     environment:
-      CODECLIMATE_REPO_TOKEN: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
+      CC_TEST_REPORTER_ID: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
     steps:
       - checkout
       - run: bundle install
       - run: bundle exec rubocop
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
       - run: bundle exec rspec
-      - run: bundle exec codeclimate-test-reporter
+      - run:
+          name: Upload Code Climate Test Coverage
+          command: |
+            ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.json"
+            ./cc-test-reporter upload-coverage --debug
