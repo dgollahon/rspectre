@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('rspec',    '~> 3.0')
 
   gem.add_development_dependency('pry',           '~> 0.14')
-  gem.add_development_dependency('rubocop',       '~> 1.17.0')
-  gem.add_development_dependency('rubocop-rspec', '~> 2.4.0')
+  gem.add_development_dependency('rubocop',       '~> 1.24.1')
+  gem.add_development_dependency('rubocop-rspec', '~> 2.7.0')
 end
