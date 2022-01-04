@@ -6,6 +6,8 @@ require:
   - rubocop-rspec
 Gemspec/DateAssignment: # (new in 1.10)
   Enabled: true
+Gemspec/RequireMFA: # new in 1.23
+  Enabled: true
 Layout/ExtraSpacing:
   AllowForAlignment: true
 Layout/FirstArrayElementIndentation:
@@ -23,6 +25,10 @@ Layout/FirstMethodParameterLineBreak:
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
+Layout/LineEndStringConcatenationIndentation: # new in 1.18
+  Enabled: true
+Layout/LineLength:
+  Max: 100
 Layout/MultilineArrayBraceLayout:
   Enabled: true
 Layout/MultilineAssignmentLayout:
@@ -39,6 +45,16 @@ Layout/MultilineMethodDefinitionBraceLayout:
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
 Lint/AmbiguousAssignment: # (new in 1.7)
+  Enabled: true
+Lint/AmbiguousOperatorPrecedence: # new in 1.21
+  Enabled: false
+Lint/AmbiguousRange: # new in 1.19
+  Enabled: true
+Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
+  Enabled: true
+Lint/RequireRelativeSelfPath: # new in 1.22
+  Enabled: true
+Lint/UselessRuby2Keywords: # new in 1.23
   Enabled: true
 Lint/DeprecatedConstants: # (new in 1.8)
   Enabled: true
@@ -76,18 +92,32 @@ Metrics/AbcSize:
   Enabled: false
 Metrics/MethodLength:
   Max: 20
-Metrics/LineLength:
-  Max: 100
 Metrics/BlockLength:
   Exclude:
     # Ignore RSpec DSL
     - spec/**/*
+Naming/BlockForwarding: # new in 1.24
+  Enabled: true
 Naming/MethodParameterName:
   Enabled: false
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
+Security/IoMethods: # new in 1.22
+  Enabled: true
+Style/FileRead: # new in 1.24
+  Enabled: true
+Style/FileWrite: # new in 1.24
+  Enabled: true
+Style/MapToHash: # new in 1.24
+  Enabled: true
 Style/Next:
   EnforcedStyle: always
+Style/NumberedParameters: # new in 1.22
+  Enabled: true
+Style/NumberedParametersLimit: # new in 1.22
+  Enabled: false
+Style/OpenStructUse: # new in 1.23
+  Enabled: true
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     "%i": "[]"
@@ -99,6 +129,10 @@ Style/PercentLiteralDelimiters:
     "%w": "[]"
     "%W": "[]"
     "%x": ()
+Style/RedundantSelfAssignmentBranch: # new in 1.19
+  Enabled: true
+Style/SelectByRegexp: # new in 1.22
+  Enabled: true
 Style/TrivialAccessors:
   ExactNameMatch: false
 Style/SymbolArray:
@@ -159,6 +193,10 @@ Style/StringChars: # (new in 1.12)
   Enabled: true
 Style/SwapValues: # (new in 1.1)
   Enabled: true
+RSpec/ExcessiveDocstringSpacing: # new in 2.5
+  Enabled: true
+RSpec/FactoryBot/SyntaxMethods: # new in 2.7
+  Enabled: false
 RSpec/MessageExpectation:
   Enabled: true
 RSpec/ExampleLength:
@@ -171,5 +209,7 @@ RSpec/MultipleExpectations:
   Enabled: false
 RSpec/Rails/AvoidSetupHook: # (new in 2.4)
   Enabled: false
+RSpec/SubjectDeclaration: # new in 2.5
+  Enabled: true
 RSpec/VerifiedDoubles:
   IgnoreSymbolicNames: true
