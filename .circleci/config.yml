@@ -1,9 +1,15 @@
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.2 # https://github.com/CircleCI-Public/ruby-orb
 
 jobs:
-  build:
+  test:
+    parameters:
+      ruby-version:
+        type: string
     docker:
-      - image: circleci/ruby:2.5.9
+      - image: cimg/ruby:<< parameters.ruby-version >>
     environment:
       CODECLIMATE_REPO_TOKEN: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
     steps:
@@ -12,3 +18,11 @@ jobs:
       - run: bundle exec rubocop
       - run: bundle exec rspec
       - run: bundle exec codeclimate-test-reporter
+
+workflows:
+  build_and_test:
+    jobs:
+      - test:
+          matrix: # https://circleci.com/blog/circleci-matrix-jobs/
+            parameters:
+              ruby-version: ['2.5', '3.1'] # https://github.com/CircleCI-Public/cimg-ruby
