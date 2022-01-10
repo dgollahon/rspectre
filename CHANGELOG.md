@@ -5,7 +5,8 @@
 ## [0.0.4]
 
 - Fixed `parser` version constraint - [#43](https://github.com/dgollahon/rspectre/pull/43) ([@dgollahon]) (+ thanks @chiastolite)
-- Re-enabled diagnostic warnings -[#39](https://github.com/dgollahon/rspectre/pull/39) ([@dgollahon])
+- Re-enabled diagnostic warnings - [#39](https://github.com/dgollahon/rspectre/pull/39) ([@dgollahon])
+- Dropped support for ruby 2.5 - [#53](https://github.com/dgollahon/rspectre/pull/53) (@alejandropere)
 
 ## [0.0.3]
 
