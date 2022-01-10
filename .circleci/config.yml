@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.9
+      - image: circleci/ruby:2.6.9
     environment:
       CC_TEST_REPORTER_ID: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
     steps:
