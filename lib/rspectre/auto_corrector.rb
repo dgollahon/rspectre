@@ -12,9 +12,10 @@ module RSpectre
     end
 
     def correct
-      File.open(filename, 'w') do |file|
-        file.write(rewrite(buffer, Parser::CurrentRuby.new.parse(buffer)))
-      end
+      File.write(
+        filename,
+        rewrite(buffer, Parser::CurrentRuby.new.parse(buffer))
+      )
     end
 
     def on_block(node)
