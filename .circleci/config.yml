@@ -1,9 +1,12 @@
-version: 2
+version: 2.1
 
 jobs:
-  build:
+  build_ruby:
+    parameters:
+      ruby-version:
+        type: string
     docker:
-      - image: circleci/ruby:2.6.9
+      - image: cimg/ruby:<< parameters.ruby-version >>
     environment:
       CC_TEST_REPORTER_ID: c8c9bf91b1e168a3f507a2ef2d2d891eb2e9cf37c06ffd4d0c6ba4b7caf618ab
     steps:
@@ -22,3 +25,11 @@ jobs:
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.json"
             ./cc-test-reporter upload-coverage --debug
+
+workflows:
+  build:
+    jobs:
+      - build_ruby:
+          matrix: # https://circleci.com/blog/circleci-matrix-jobs/
+            parameters:
+              ruby-version: ['2.6', '2.7', '3.0', '3.1'] # https://github.com/CircleCI-Public/cimg-ruby
