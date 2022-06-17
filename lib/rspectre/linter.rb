@@ -43,7 +43,7 @@ module RSpectre
       scope.__send__(:define_method, method_name) do |*args, &block|
         yield
 
-        original_method.bind(self).(*args, &block)
+        original_method.bind_call(self, *args, &block)
       end
     end
 
