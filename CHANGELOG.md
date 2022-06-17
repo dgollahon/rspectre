@@ -2,6 +2,8 @@
 
 ## [Master (Unreleased)]
 
+- Dropped support for ruby 2.6 - [#58](https://github.com/dgollahon/rspectre/pull/58) ([@dgollahon])
+
 ## [0.0.4]
 
 - Fixed `parser` version constraint - [#43](https://github.com/dgollahon/rspectre/pull/43) ([@dgollahon]) (+ thanks @chiastolite)
