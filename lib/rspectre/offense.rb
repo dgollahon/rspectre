@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module RSpectre
-  class Offense
-    include Anima.new(:file, :line, :source_line, :start_column, :end_column, :type)
+  Offense = Struct.new(:file, :line, :source_line, :start_column, :end_column, :type, keyword_init: true) do
 
     DESCRIPTIONS = {
       'UnusedLet'         => 'Unused `let` definition.',

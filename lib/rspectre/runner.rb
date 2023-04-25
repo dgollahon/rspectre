@@ -2,12 +2,13 @@
 
 module RSpectre
   class Runner
-    include Concord.new(:rspec_arguments, :auto_correct)
+    attr_reader :rspec_arguments, :auto_correct
 
     EXIT_SUCCESS = 0
 
-    def initialize(*)
-      super
+    def initialize(rspec_arguments, auto_correct)
+      @rspec_arguments = rspec_arguments
+      @auto_correct = auto_correct
       @rspec_output = StringIO.new
     end
 

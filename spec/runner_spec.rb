@@ -47,8 +47,8 @@ RSpec.describe RSpectre::Runner do
              RuntimeError:
                uh oh
              # <file>:2:in `block (2 levels) in <top (required)>'
-             # <file>:56:in `run_specs'
-             # <file>:15:in `lint'
+             # <file>:57:in `run_specs'
+             # <file>:16:in `lint'
 
         Finished in <time> seconds (files took <time> seconds to load)
         1 example, 1 failure

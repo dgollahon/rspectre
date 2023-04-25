@@ -3,7 +3,11 @@
 module RSpectre
   class SourceMap
     class Parser
-      include Concord.new(:file)
+      attr_reader :file
+
+      def initialize(file)
+        @file = file
+      end
 
       def populate(map)
         walk(parsed_source) { |node| map.add(node) }

@@ -2,7 +2,13 @@
 
 module RSpectre
   class Node
-    include Concord::Public.new(:file, :line, :node)
+    attr_reader :file, :line, :node
+
+    def initialize(file, line, node)
+      @file = file
+      @line = line
+      @node = node
+    end
 
     def start_column
       location.column + 1

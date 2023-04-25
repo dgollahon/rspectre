@@ -6,8 +6,6 @@ require 'pathname'
 require 'set'
 require 'stringio'
 
-require 'anima'
-require 'concord'
 require 'parser/current'
 require 'rspec'
 

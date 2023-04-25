@@ -2,10 +2,10 @@
 
 module RSpectre
   class SourceMap
-    include Concord.new(:map)
+    attr_reader :map
 
     def initialize
-      super(Hash.new { [] })
+      @map = Hash.new { [] }
     end
     private_class_method :new
 
