@@ -26,6 +26,17 @@ module RSpectre
       location.expression.source_line.rstrip
     end
 
+    def eql?(other)
+      instance_of?(other.class) &&
+        file == other.file &&
+        line == other.line &&
+        node == other.node
+    end
+
+    def hash
+      [file, line, node, self.class].hash
+    end
+
     private
 
     def single_line?
