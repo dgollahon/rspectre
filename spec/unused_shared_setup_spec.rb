@@ -68,6 +68,14 @@ RSpec.describe RSpectre do
         let(:c) { :value }
       end
 
+      shared_examples 'used with keyword arguments' do |a:|
+        specify { expect(a).to eq(d) }
+      end
+
+      include_examples('used with keyword arguments', a: 50) do
+        let(:d) { 50 }
+      end
+
       shared_examples 'class_exec is needed for proper method inclusion' do
         def zapp_brannigan(*)
           'kif, show them the medal i won'

@@ -48,10 +48,10 @@ module RSpectre
       # for now.
       def example_group.shared_examples(name, *args, &block)
         if (node = UnusedSharedSetup.register(:shared_examples, caller_locations))
-          super(name, *args) do |*shared_args|
+          super(name, *args) do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
-            class_exec(*shared_args, &block)
+            class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
           super(name, *args, &block)
