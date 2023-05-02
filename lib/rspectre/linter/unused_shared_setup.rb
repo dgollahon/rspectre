@@ -13,7 +13,7 @@ module RSpectre
         receiver.__send__(:define_singleton_method, method) do |name, *args, &block|
           # When we can locate the source of the node, tag it
           if (node = UnusedSharedSetup.register(method, caller_locations))
-            # And call the orignal
+            # And call the original
             original_method.(name, *args) do |*shared_args|
               # But record that it was used in a `before`
               before { UnusedSharedSetup.record(node) }
