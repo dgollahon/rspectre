@@ -2,6 +2,14 @@
 
 ## [Master (Unreleased)]
 
+## [0.1.0]
+
+- Detect `let`s and other constructs using a block-pass like `let(:example, &block)` [#76](https://github.com/dgollahon/rspectre/pull/76) ([@dgollahon])
+- Fix keyword forwarding for ruby 3.x [#71](https://github.com/dgollahon/rspectre/pull/71) and [#73](https://github.com/dgollahon/rspectre/pull/73) ([@bquorning], [@dgollahon])
+- Dropped support for ruby 2.7 - [#72](https://github.com/dgollahon/rspectre/pull/72) ([@dgollahon])
+- Improve test coverage and officially support the last 4 minor versions of `rspec` and all non-EOL `ruby` versions. [#70](https://github.com/dgollahon/rspectre/pull/70) ([@dgollahon])
+- Remove `concord`, `anima`, and their transitive dependencies; nice! - [#69](https://github.com/dgollahon/rspectre/pull/69)
+- Slightly improve performance via `#bind_call` - [#59](https://github.com/dgollahon/rspectre/pull/59) ([@dgollahon])
 - Dropped support for ruby 2.6 - [#58](https://github.com/dgollahon/rspectre/pull/58) ([@dgollahon])
 
 ## [0.0.4]
@@ -29,10 +37,13 @@
 
 <!-- Version diffs -->
 
-[master (unreleased)]: https://github.com/dgollahon/rspectre/compare/v0.0.3...HEAD
+[master (unreleased)]: https://github.com/dgollahon/rspectre/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/dgollahon/rspectre/compare/v0.0.4...v0.1.0
+[0.0.4]: https://github.com/dgollahon/rspectre/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dgollahon/rspectre/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/dgollahon/rspectre/compare/6348bdefddbf8c9c267079c908eae9059d0a53cb...v0.0.2
 
 <!-- Contributors -->
 
 [@dgollahon]: https://github.com/dgollahon
+[@bquorning]: https://github.com/bquorning
