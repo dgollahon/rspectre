@@ -10,21 +10,21 @@ module RSpectre
         original_method = receiver.method(method)
 
         # Overwrite the class method using define_singleton_method
-        receiver.__send__(:define_singleton_method, method) do |name, *args, &block|
+        receiver.__send__(:define_singleton_method, method) do |name, *args, **kwargs, &block|
           # When we can locate the source of the node, tag it
           if (node = UnusedSharedSetup.register(method, caller_locations))
             # And call the original
-            original_method.(name, *args) do |*shared_args|
+            original_method.(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
               # But record that it was used in a `before`
               before { UnusedSharedSetup.record(node) }
 
               # And then perform the original block in a `class_exec` like the original block was
               # supposed to be
-              class_exec(*shared_args, &block)
+              class_exec(*shared_args, **shared_kwargs, &block)
             end
           else
             # If we couldn't locate the source, just delegate to the original method.
-            original_method.(name, *args, &block)
+            original_method.(name, *args, **kwargs, &block)
           end
         end
       end
@@ -46,39 +46,39 @@ module RSpectre
       # terms of the old method. I think we can probably do some kind of module inclusion to reduce
       # this duplication (which is effectively what happens here anyway, i think), but this works
       # for now.
-      def example_group.shared_examples(name, *args, &block)
+      def example_group.shared_examples(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_examples, caller_locations))
-          super(name, *args) do |*shared_args, **shared_kwargs|
+          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
             class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, &block)
+          super(name, *args, **kwargs, &block)
         end
       end
 
-      def example_group.shared_examples_for(name, *args, &block)
+      def example_group.shared_examples_for(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_examples_for, caller_locations))
-          super(name, *args) do |*shared_args|
+          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
-            class_exec(*shared_args, &block)
+            class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, &block)
+          super(name, *args, **kwargs, &block)
         end
       end
 
-      def example_group.shared_context(name, *args, &block)
+      def example_group.shared_context(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_context, caller_locations))
-          super(name, *args) do |*shared_args|
+          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
-            class_exec(*shared_args, &block)
+            class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, &block)
+          super(name, *args, **kwargs, &block)
         end
       end
     end

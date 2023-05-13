@@ -40,10 +40,10 @@ module RSpectre
     def self.prepend_behavior(scope, method_name)
       original_method = scope.instance_method(method_name)
 
-      scope.__send__(:define_method, method_name) do |*args, &block|
+      scope.__send__(:define_method, method_name) do |*args, **kwargs, &block|
         yield
 
-        original_method.bind_call(self, *args, &block)
+        original_method.bind_call(self, *args, **kwargs, &block)
       end
     end
 
