@@ -2,6 +2,8 @@
 
 ## [Master (Unreleased)]
 
+- Suppress method redefined warnings when `$VERBOSE` is `true` [#80](https://github.com/dgollahon/rspectre/pull/80) ([@dgollahon])
+
 ## [0.1.0]
 
 - Detect `let`s and other constructs using a block-pass like `let(:example, &block)` [#76](https://github.com/dgollahon/rspectre/pull/76) ([@dgollahon])
