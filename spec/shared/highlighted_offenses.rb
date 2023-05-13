@@ -3,7 +3,7 @@
 RSpec.shared_examples 'highlighted offenses' do |source|
   include_context 'rspectre runner'
 
-  def expected_offenses(source, spec_file) # rubocop:disable Metrics/MethodLength
+  def expected_offenses(source, spec_file)
     line_count = 0
     last_line  = ''
 
