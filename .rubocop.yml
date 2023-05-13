@@ -90,12 +90,16 @@ Lint/UnmodifiedReduceAccumulator: # (new in 1.1)
   Enabled: true
 Metrics/AbcSize:
   Enabled: false
-Metrics/MethodLength:
-  Max: 20
 Metrics/BlockLength:
   Exclude:
     # Ignore RSpec DSL
     - spec/**/*
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 Naming/BlockForwarding: # new in 1.24
   Enabled: true
 Naming/MethodParameterName:
@@ -110,6 +114,8 @@ Style/FileWrite: # new in 1.24
   Enabled: true
 Style/MapToHash: # new in 1.24
   Enabled: true
+Style/MultilineBlockChain:
+  Enabled: false
 Style/Next:
   EnforcedStyle: always
 Style/NumberedParameters: # new in 1.22
