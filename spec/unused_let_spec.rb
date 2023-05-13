@@ -52,6 +52,20 @@ RSpec.describe RSpectre do
         let(:used) { 'not actually used' }
         ^^^^^^^^^^ UnusedLet: Unused `let` definition.
       end
+
+      context 'block-pass cases' do
+        def self.block_example(&block)
+          let(:used_block_pass,   &block)
+          let(:unused_block_pass, &block)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
+        end
+
+        block_example { 'neat!' }
+
+        it 'detects block passes properly' do
+          expect(used_block_pass).to eql('neat!')
+        end
+      end
     end
   RUBY
 end

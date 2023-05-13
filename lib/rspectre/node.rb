@@ -27,7 +27,11 @@ module RSpectre
     end
 
     def location
-      node.children.first.location
+      if node.type.equal?(:block)
+        node.children.first.location
+      else
+        node.location
+      end
     end
   end
 end
