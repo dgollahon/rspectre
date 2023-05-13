@@ -7,8 +7,8 @@ module RSpectre
     DESCRIPTIONS = {
       'UnusedLet'         => 'Unused `let` definition.',
       'UnusedSubject'     => 'Unused `subject` definition.',
-      'UnusedSharedSetup' => 'Unused `shared_examples`, `shared_examples_for`, or'\
-                             ' `shared_context` definition.'
+      'UnusedSharedSetup' => 'Unused `shared_examples`, `shared_examples_for`, or ' \
+                             '`shared_context` definition.'
     }.freeze
 
     def self.parse(type, node)
@@ -23,7 +23,7 @@ module RSpectre
     end
 
     def warn
-      puts to_s
+      puts self
     end
 
     def to_s

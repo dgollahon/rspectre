@@ -4,12 +4,12 @@ AllCops:
   DisplayCopNames: true
 require:
   - rubocop-rspec
-Gemspec/DateAssignment: # (new in 1.10)
+Gemspec/DeprecatedAttributeAssignment: # (new in 1.10)
   Enabled: true
+Gemspec/DevelopmentDependencies:
+  Enabled: false
 Gemspec/RequireMFA: # new in 1.23
   Enabled: true
-Layout/ExtraSpacing:
-  AllowForAlignment: true
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 Layout/FirstHashElementIndentation:
@@ -25,23 +25,19 @@ Layout/FirstMethodParameterLineBreak:
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
+Layout/LineContinuationLeadingSpace: # new in 1.31
+  Enabled: true
+Layout/LineContinuationSpacing: # new in 1.31
+  Enabled: true
 Layout/LineEndStringConcatenationIndentation: # new in 1.18
   Enabled: true
 Layout/LineLength:
   Max: 100
-Layout/MultilineArrayBraceLayout:
-  Enabled: true
 Layout/MultilineAssignmentLayout:
   EnforcedStyle: new_line
   Enabled: true
-Layout/MultilineHashBraceLayout:
-  Enabled: true
-Layout/MultilineMethodCallBraceLayout:
-  Enabled: true
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
-Layout/MultilineMethodDefinitionBraceLayout:
-  Enabled: true
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true
 Lint/AmbiguousAssignment: # (new in 1.7)
@@ -50,9 +46,23 @@ Lint/AmbiguousOperatorPrecedence: # new in 1.21
   Enabled: false
 Lint/AmbiguousRange: # new in 1.19
   Enabled: true
+Lint/ConstantOverwrittenInRescue: # new in 1.31
+  Enabled: true
+Lint/DuplicateMagicComment: # new in 1.37
+  Enabled: true
+Lint/DuplicateMatchPattern: # new in 1.50
+  Enabled: true
 Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
   Enabled: true
+Lint/NonAtomicFileOperation: # new in 1.31
+  Enabled: true
+Lint/RefinementImportMethods: # new in 1.27
+  Enabled: true
+Lint/RequireRangeParentheses: # new in 1.32
+  Enabled: true
 Lint/RequireRelativeSelfPath: # new in 1.22
+  Enabled: true
+Lint/UselessRescue: # new in 1.43
   Enabled: true
 Lint/UselessRuby2Keywords: # new in 1.23
   Enabled: true
@@ -94,6 +104,8 @@ Metrics/BlockLength:
   Exclude:
     # Ignore RSpec DSL
     - spec/**/*
+Metrics/CollectionLiteralLength:
+  Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/MethodLength:
@@ -106,7 +118,14 @@ Naming/MethodParameterName:
   Enabled: false
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
+Security/CompoundHash: # new in 1.28
+  Enabled: false
+Style/ComparableClamp: # new in 1.44
+  Enabled: true
+
 Security/IoMethods: # new in 1.22
+  Enabled: true
+Style/ArrayIntersect: # new in 1.40
   Enabled: true
 Style/FileRead: # new in 1.24
   Enabled: true
@@ -116,8 +135,6 @@ Style/MapToHash: # new in 1.24
   Enabled: true
 Style/MultilineBlockChain:
   Enabled: false
-Style/Next:
-  EnforcedStyle: always
 Style/NumberedParameters: # new in 1.22
   Enabled: true
 Style/NumberedParametersLimit: # new in 1.22
@@ -141,11 +158,11 @@ Style/SelectByRegexp: # new in 1.22
   Enabled: true
 Style/TrivialAccessors:
   ExactNameMatch: false
-Style/SymbolArray:
-  Enabled: true
 Style/BarePercentLiterals:
   EnforcedStyle: percent_q
 Style/CollectionMethods:
+  Enabled: true
+Style/ConcatArrayLiterals: # new in 1.41
   Enabled: true
 Style/Send:
   Enabled: true
@@ -161,15 +178,29 @@ Style/ArgumentsForwarding: # (new in 1.1)
   Enabled: true
 Style/CollectionCompact: # (new in 1.2)
   Enabled: true
+Style/DataInheritance: # new in 1.49
+  Enabled: true
 Style/Documentation:
   Enabled: false
 Style/DocumentDynamicEvalDefinition: # (new in 1.1)
   Enabled: true
+Style/DirEmpty: # new in 1.48
+  Enabled: true
+Style/EmptyHeredoc: # new in 1.32
+  Enabled: true
+Style/EnvHome: # new in 1.29
+  Enabled: true
+Style/ExactRegexpMatch: # new in 1.51
+  Enabled: true
+Style/FetchEnvVar:
+  Enabled: false # Generally covered by mutant, may be noisy if intended
 Style/GuardClause:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
 Style/EndlessMethod: # (new in 1.8)
+  Enabled: true
+Style/FileEmpty: # new in 1.48
   Enabled: true
 Style/HashConversion: # (new in 1.10)
   Enabled: true
@@ -181,41 +212,97 @@ Style/InPatternThen: # (new in 1.16)
   Enabled: true
 Style/LambdaCall:
   Enabled: false
+Style/MagicCommentFormat: # new in 1.35
+  Enabled: true
+Style/MapCompactWithConditionalBlock: # new in 1.30
+  Enabled: true
+Style/MapToSet: # new in 1.42
+  Enabled: true
+Style/MinMaxComparison: # new in 1.42
+  Enabled: true
 Style/MultilineInPatternThen: # (new in 1.16)
   Enabled: true
 Style/NegatedIfElseCondition: # (new in 1.2)
   Enabled: true
+Style/NestedFileDirname: # new in 1.26
+  Enabled: true
 Style/NilLambda: # (new in 1.3)
+  Enabled: true
+Style/ObjectThen: # new in 1.28
+  Enabled: true
+Style/OperatorMethodCall: # new in 1.37
   Enabled: true
 Style/QuotedSymbols: # (new in 1.16)
   Enabled: true
 Style/RedundantArgument: # (new in 1.4)
   Enabled: true
-Style/SignalException:
-  EnforcedStyle: semantic
+Style/RedundantConstantBase:
+  Enabled: false # I don't trust this one to be correct and Mutant can solve for it most of the time as well.
+Style/RedundantDoubleSplatHashBraces: # new in 1.41
+  Enabled: true
+Style/RedundantEach: # new in 1.38
+  Enabled: true
+Style/RedundantHeredocDelimiterQuotes:
+  Enabled: false # I deliberately use both styles
+Style/RedundantInitialize: # new in 1.27
+  Enabled: true
+Style/RedundantLineContinuation: # new in 1.49
+  Enabled: true
+Style/RedundantStringEscape: # new in 1.37
+  Enabled: true
 Style/SingleLineBlockParams:
   Enabled: false
 Style/StringChars: # (new in 1.12)
   Enabled: true
 Style/SwapValues: # (new in 1.1)
   Enabled: true
-RSpec/ExcessiveDocstringSpacing: # new in 2.5
+RSpec/BeEmpty:
+  Enabled: false # I like to be explicit with eql([])
+RSpec/BeEq: # new in 2.9.0
   Enabled: true
-RSpec/FactoryBot/SyntaxMethods: # new in 2.7
-  Enabled: false
-RSpec/MessageExpectation:
+RSpec/BeNil: # new in 2.9.0
+  Enabled: true
+RSpec/ChangeByZero: # new in 2.11
+  Enabled: true
+RSpec/ContainExactly: # new in 2.19
+  Enabled: true
+RSpec/DuplicatedMetadata: # new in 2.16
+  Enabled: true
+RSpec/ExcessiveDocstringSpacing: # new in 2.5
   Enabled: true
 RSpec/ExampleLength:
   Enabled: false
 RSpec/FilePath:
   Enabled: false
+RSpec/IndexedLet:
+  Enabled: false # Too pedantic, numbering is sometimes OK
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
+  Enabled: true
+RSpec/MatchArray: # new in 2.19
+  Enabled: true
+RSpec/MessageExpectation:
   Enabled: true
 RSpec/MultipleExpectations:
   Enabled: false
-RSpec/Rails/AvoidSetupHook: # (new in 2.4)
-  Enabled: false
+RSpec/NoExpectationExample: # new in 2.13
+  Enabled: true
+RSpec/PendingWithoutReason: # new in 2.16
+  Enabled: true
+RSpec/RedundantAround: # new in 2.19
+  Enabled: true
+RSpec/SkipBlockInsideExample: # new in 2.19
+  Enabled: true
+RSpec/SortMetadata: # new in 2.14
+  Enabled: true
 RSpec/SubjectDeclaration: # new in 2.5
   Enabled: true
 RSpec/VerifiedDoubles:
   IgnoreSymbolicNames: true
+RSpec/VerifiedDoubleReference: # new in 2.10.0
+  Enabled: true
+Capybara:
+  Enabled: false
+FactoryBot:
+  Enabled: false
+RSpec/Rails:
+  Enabled: false

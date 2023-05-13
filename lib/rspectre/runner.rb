@@ -39,7 +39,7 @@ module RSpectre
 
       abort(
         Color.red(
-          'Running the specs failed. Either your tests do not pass '\
+          'Running the specs failed. Either your tests do not pass ' \
           'normally or this is a bug in RSpectre.'
         ) + <<~TEXT
 
