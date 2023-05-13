@@ -40,6 +40,8 @@ module RSpectre
     def self.prepend_behavior(scope, method_name)
       original_method = scope.instance_method(method_name)
 
+      # Removing the method first prevents method redefined warnings when $VERBOSE is true
+      scope.remove_method(method_name)
       scope.__send__(:define_method, method_name) do |*args, **kwargs, &block|
         yield
 

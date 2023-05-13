@@ -64,6 +64,8 @@ RSpec.shared_examples 'highlighted offenses' do |source|
 
           expect(offense.description).to eql(description)
         end
+
+        expect(stderr.empty?).to be(true), 'There was unexpected output to STDERR!'
       end
     end
   end

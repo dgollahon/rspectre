@@ -12,7 +12,7 @@ RSpec.shared_context 'rspectre runner' do # rubocop:disable RSpec/ContextWording
 
     output =
       Dir.chdir(File.dirname(spec_file.path)) do
-        Open3.capture3("#{rspectre_path} --rspec #{spec_file.path}")
+        Open3.capture3("RUBYOPT='--verbose' #{rspectre_path} --rspec #{spec_file.path}")
       end
 
     yield([output, spec_file])

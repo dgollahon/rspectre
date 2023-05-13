@@ -11,7 +11,7 @@ RSpec.describe RSpectre do
       let(:unused_binary) { "\\xff".b }
       ^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
 
-      let(:unused_compound) { 1 + 1; 'noop' }
+      let(:unused_compound) { foo; 'noop' }
       ^^^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
 
       let(
@@ -26,7 +26,7 @@ RSpec.describe RSpectre do
 
       let(:unused_multiline_compound) do
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
-        'doop'
+        foo
         'noop'
       end
 
