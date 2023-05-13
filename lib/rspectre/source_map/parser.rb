@@ -3,7 +3,7 @@
 module RSpectre
   class SourceMap
     class Parser
-      include Concord.new(:file)
+      include KeywordStruct.new(:file)
 
       def populate(map)
         walk(parsed_source) { |node| map.add(node) }

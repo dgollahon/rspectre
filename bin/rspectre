@@ -29,4 +29,4 @@ end.parse(ARGV)
 
 rspec, auto_correct = options.fetch_values(:rspec, :'auto-correct')
 
-RSpectre::Runner.new(rspec, auto_correct).lint
+RSpectre::Runner.new(rspec_arguments: rspec, auto_correct: auto_correct).lint

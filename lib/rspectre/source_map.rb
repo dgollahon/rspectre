@@ -2,15 +2,15 @@
 
 module RSpectre
   class SourceMap
-    include Concord.new(:map)
+    include KeywordStruct.new(:map)
 
     def initialize
-      super(Hash.new { [] })
+      super(map: Hash.new { [] })
     end
     private_class_method :new
 
     def self.parse(file)
-      self::Parser.new(file).populate(new)
+      self::Parser.new(file: file).populate(new)
     end
 
     def add(node)

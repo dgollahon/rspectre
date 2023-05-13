@@ -6,10 +6,10 @@ require 'pathname'
 require 'set'
 require 'stringio'
 
-require 'anima'
-require 'concord'
 require 'parser/current'
 require 'rspec'
+
+require 'rspectre/keyword_struct'
 
 require 'rspectre/auto_corrector'
 require 'rspectre/color'

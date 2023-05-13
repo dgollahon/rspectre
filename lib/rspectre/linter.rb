@@ -19,7 +19,7 @@ module RSpectre
       raw_node = node_map(file).find_method(selector, line)
 
       if raw_node
-        node = RSpectre::Node.new(file, line, raw_node)
+        node = RSpectre::Node.new(file: file, line: line, node: raw_node)
         TRACKER.register(self::TAG, node)
         if block_given?
           yield node

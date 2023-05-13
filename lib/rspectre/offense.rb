@@ -2,7 +2,7 @@
 
 module RSpectre
   class Offense
-    include Anima.new(:file, :line, :source_line, :start_column, :end_column, :type)
+    include KeywordStruct.new(:file, :line, :source_line, :start_column, :end_column, :type)
 
     DESCRIPTIONS = {
       'UnusedLet'         => 'Unused `let` definition.',
