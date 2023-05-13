@@ -20,8 +20,8 @@ OptionParser.new do |opts|
   opts.on(
     '--auto-correct',
     'Enables auto-correct.',
-    'When auto-correct is enabled, rspectre will modify your source files in place and delete any'\
-    ' unused test setup.'
+    'When auto-correct is enabled, rspectre will modify your source files in place and delete ' \
+    'any unused test setup.'
   ) do |value|
     options[:'auto-correct'] = value
   end
