@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  default_build_with_coverage:
+  build_with_coverage:
     docker:
       - image: cimg/ruby:3.2
     environment:
@@ -22,6 +22,13 @@ jobs:
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.json"
             ./cc-test-reporter upload-coverage --debug
+  lint_rubocop:
+    docker:
+      - image: cimg/ruby:3.2
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec rubocop
   build_variants:
     parameters:
       ruby-version:
@@ -39,13 +46,13 @@ jobs:
           name: Verify RSpec version was overridden
           command: set +o pipefail && ! git diff --exit-code rspectre.gemspec && set -o pipefail
       - run: bundle install
-      - run: bundle exec rubocop
       - run: bundle exec rspec
 
 workflows:
   build:
     jobs:
-      - default_build_with_coverage
+      - build_with_coverage
+      - lint_rubocop
       - build_variants:
           matrix: # https://circleci.com/blog/circleci-matrix-jobs/
             parameters:
