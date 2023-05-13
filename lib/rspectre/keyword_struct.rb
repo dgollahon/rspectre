@@ -23,6 +23,10 @@ module RSpectre
           end
           alias_method :==, :eql?
 
+          define_method(:hash) do
+            [self.class, *names.map { |name| __send__(name) }].hash
+          end
+
           define_method(:inspect) do
             class_name = self.class.name || self.class.inspect
             attributes = names.map { |name| "#{name}=#{__send__(name).inspect}" }.join(' ')
