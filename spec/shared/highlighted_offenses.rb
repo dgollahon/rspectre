@@ -34,7 +34,12 @@ RSpec.shared_examples 'highlighted offenses' do |source|
 
   it 'highlights the expected offenses' do
     aggregate_failures do
-      run_rspectre(source) do |(stdout, _stderr, status), file|
+      run_rspectre(source) do |(stdout, stderr, status), file|
+        unless stderr.empty?
+          puts 'STDERR:'
+          puts stderr
+        end
+
         offenses = stdout.split("\n").each_slice(4)
         expected_offenses = expected_offenses(source, file)
 
