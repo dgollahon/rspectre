@@ -2,10 +2,10 @@
 
 module RSpectre
   class Tracker
-    include Concord.new(:registry, :tracker)
+    include KeywordStruct.new(:registry, :tracker)
 
     def initialize
-      super(Hash.new { Set.new }, Hash.new { Set.new })
+      super(registry: Hash.new { Set.new }, tracker: Hash.new { Set.new })
     end
 
     def register(type, node)

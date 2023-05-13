@@ -2,11 +2,11 @@
 
 module RSpectre
   class Runner
-    include Concord.new(:rspec_arguments, :auto_correct)
+    include KeywordStruct.new(:rspec_arguments, :auto_correct)
 
     EXIT_SUCCESS = 0
 
-    def initialize(*)
+    def initialize(**)
       super
       @rspec_output = StringIO.new
     end

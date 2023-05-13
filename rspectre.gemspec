@@ -14,8 +14,6 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.7'
 
-  gem.add_runtime_dependency('anima',    '~> 0.3')
-  gem.add_runtime_dependency('concord',  '~> 0.1')
   gem.add_runtime_dependency('parser',   '>= 3.2.2.1')
   gem.add_runtime_dependency('rspec',    '~> 3.0')
 

@@ -2,7 +2,7 @@
 
 module RSpectre
   class Node
-    include Concord::Public.new(:file, :line, :node)
+    include KeywordStruct.new(:file, :line, :node)
 
     def start_column
       location.column + 1

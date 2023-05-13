@@ -2,13 +2,13 @@
 
 module RSpectre
   class AutoCorrector < Parser::TreeRewriter
-    include Concord.new(:filename, :nodes, :buffer)
+    include KeywordStruct.new(:filename, :nodes, :buffer)
 
     def initialize(filename, nodes)
       buffer = Parser::Source::Buffer.new("(#{filename})")
       buffer.source = File.read(filename)
 
-      super(filename, nodes, buffer)
+      super(filename: filename, nodes: nodes, buffer: buffer)
     end
 
     def correct
