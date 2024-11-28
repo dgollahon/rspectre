@@ -95,7 +95,7 @@ You should generally run your _entire_ test suite with `rspectre`. `rspectre` in
 
 ### Supported Tool Versions
 
-My intent is to support all non-EOL ruby versions and the last 4 minor versions of `rspec`. At the time of writing (2023-05-13), those are (`3.0`, `3.1`, `3.2`) and (`3.9`, `3.10`, `3.11`, and `3.12`, respectively). If you encounter an issue on a different version of `rspec`, please try upgrading first. If you still have a problem, please file an issue.
+My intent is to support all non-EOL ruby versions and the last 4 minor versions of `rspec`. At the time of writing (2024-11-28), those are (`3.0`, `3.1`, `3.2`) and (`3.10`, `3.11`, `3.12`, and `3.13`, respectively). If you encounter an issue on a different version of `rspec`, please try upgrading first. If you still have a problem, please file an issue.
 
 ### Contributing
 
