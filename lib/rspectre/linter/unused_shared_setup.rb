@@ -48,37 +48,37 @@ module RSpectre
       # for now.
       def example_group.shared_examples(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_examples, caller_locations))
-          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
+          super do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
             class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, **kwargs, &block)
+          super
         end
       end
 
       def example_group.shared_examples_for(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_examples_for, caller_locations))
-          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
+          super do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
             class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, **kwargs, &block)
+          super
         end
       end
 
       def example_group.shared_context(name, *args, **kwargs, &block)
         if (node = UnusedSharedSetup.register(:shared_context, caller_locations))
-          super(name, *args, **kwargs) do |*shared_args, **shared_kwargs|
+          super do |*shared_args, **shared_kwargs|
             before { UnusedSharedSetup.record(node) }
 
             class_exec(*shared_args, **shared_kwargs, &block)
           end
         else
-          super(name, *args, **kwargs, &block)
+          super
         end
       end
     end
