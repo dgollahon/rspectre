@@ -5,7 +5,7 @@ module RSpectre
     class UnusedLet < self
       TAG = 'UnusedLet'
 
-      def example_group.let(name, &block)
+      def example_group.let(name, &)
         super
 
         UnusedLet.register(:let, caller_locations) do |node|
