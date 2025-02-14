@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'http://github.com/dgollahon/rspectre'
   gem.license     = 'MIT'
 
-  gem.required_ruby_version = '>= 3.0'
+  gem.required_ruby_version = '>= 3.1'
 
   gem.add_dependency('parser', '>= 3.2.2.1')
   gem.add_dependency('rspec',  '~> 3.10')
