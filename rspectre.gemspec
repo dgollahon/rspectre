@@ -17,8 +17,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('parser', '>= 3.2.2.1')
   gem.add_runtime_dependency('rspec',  '~> 3.10')
 
-  gem.add_development_dependency('pry',           '~> 0.14')
-  gem.add_development_dependency('rubocop',       '~> 1.51.0')
+  gem.add_development_dependency('rubocop', '~> 1.51.0')
   gem.add_development_dependency('rubocop-factory_bot', '!= 2.26.0')
   gem.add_development_dependency('rubocop-rspec', '~> 2.22.0')
 
