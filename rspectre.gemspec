@@ -14,7 +14,8 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 3.1'
 
-  gem.add_dependency('parser', '>= 3.2.2.1')
+  gem.add_dependency('parser', '>= 3.3.7.1')
+  gem.add_dependency('prism',  '~> 1.3')
   gem.add_dependency('rspec',  '~> 3.10')
 
   gem.add_development_dependency('rubocop', '~> 1.71.2')

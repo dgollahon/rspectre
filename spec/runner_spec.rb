@@ -31,7 +31,10 @@ RSpec.describe RSpectre::Runner do
       expect(status.to_i).to be > 0
       expect(stdout).to eql('')
       expect(
+        # The Runner# and ` `gsub`s handles the differences in stack traces between Ruby versions.
         stderr.gsub(/\d\.\d+/, '<time>').gsub(/\S+\.rb/, '<file>').strip
+          .gsub('RSpectre::Runner#', '')
+          .gsub('`', "'")
       ).to eql(<<~ERROR.strip)
         \e[31mRunning the specs failed. Either your tests do not pass normally or this is a bug in RSpectre.\e[0m
 
@@ -46,9 +49,9 @@ RSpec.describe RSpectre::Runner do
 
              RuntimeError:
                uh oh
-             # <file>:2:in `block (2 levels) in <top (required)>'
-             # <file>:56:in `run_specs'
-             # <file>:15:in `lint'
+             # <file>:2:in 'block (2 levels) in <top (required)>'
+             # <file>:56:in 'run_specs'
+             # <file>:15:in 'lint'
 
         Finished in <time> seconds (files took <time> seconds to load)
         1 example, 1 failure

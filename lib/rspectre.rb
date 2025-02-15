@@ -6,8 +6,24 @@ require 'pathname'
 require 'set'
 require 'stringio'
 
-require 'parser/current'
 require 'rspec'
+module RSpectre
+  LIB_PATH = Pathname.new(File.expand_path('../lib', __dir__))
+
+  MINIMUM_RUBY_FOR_PRISM = Gem::Version.new('3.3')
+  private_constant(:MINIMUM_RUBY_FOR_PRISM)
+
+  def self.ruby_version_supports_prism?
+    Gem::Version.new(RUBY_VERSION) >= MINIMUM_RUBY_FOR_PRISM
+  end
+end
+
+if RSpectre.ruby_version_supports_prism?
+  require 'parser'
+  require 'prism'
+else
+  require 'parser/current'
+end
 
 require 'rspectre/keyword_struct'
 
@@ -28,5 +44,4 @@ require 'rspectre/linter/unused_shared_setup'
 
 module RSpectre
   TRACKER = Tracker.new
-  LIB_PATH = Pathname.new(File.expand_path('../lib', __dir__))
 end

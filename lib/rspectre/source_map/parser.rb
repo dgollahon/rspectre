@@ -15,6 +15,14 @@ module RSpectre
         Null.new
       end
 
+      def self.parser_class
+        if RSpectre.ruby_version_supports_prism?
+          Prism::Translation::Parser
+        else
+          ::Parser::CurrentRuby
+        end
+      end
+
       private
 
       def walk(node, &block)
@@ -28,9 +36,8 @@ module RSpectre
       end
 
       def parsed_source
-        parser = ::Parser::CurrentRuby.new(PermissiveASTBuilder.new)
+        parser = self.class.parser_class.new(PermissiveASTBuilder.new)
         buffer = ::Parser::Source::Buffer.new(file, source: raw_source)
-
         parser.parse(buffer)
       end
 

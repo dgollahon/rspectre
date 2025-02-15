@@ -14,7 +14,7 @@ module RSpectre
     def correct
       File.write(
         filename,
-        rewrite(buffer, Parser::CurrentRuby.new.parse(buffer))
+        rewrite(buffer, SourceMap::Parser.parser_class.new.parse(buffer))
       )
     end
 
