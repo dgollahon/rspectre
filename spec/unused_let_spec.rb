@@ -68,4 +68,13 @@ RSpec.describe RSpectre do
       end
     end
   RUBY
+
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.4')
+    include_examples 'highlighted offenses', <<~RUBY
+      RSpec.describe 'unused lets' do
+        let(:unused) { it }
+        ^^^^^^^^^^^^ UnusedLet: Unused `let` definition.
+      end
+    RUBY
+  end
 end
