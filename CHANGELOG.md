@@ -2,6 +2,10 @@
 
 ## [Master (Unreleased)]
 
+## [0.2.0]
+
+- Add support for ruby 3.4 [#89](https://github.com/dgollahon/rspectre/pull/89) ([@dgollahon])
+- Remove support for ruby 3.0 [#88](https://github.com/dgollahon/rspectre/pull/88) ([@dgollahon])
 - Suppress method redefined warnings when `$VERBOSE` is `true` [#80](https://github.com/dgollahon/rspectre/pull/80) ([@dgollahon])
 
 ## [0.1.0]
@@ -39,7 +43,8 @@
 
 <!-- Version diffs -->
 
-[master (unreleased)]: https://github.com/dgollahon/rspectre/compare/v0.1.0...HEAD
+[master (unreleased)]: https://github.com/dgollahon/rspectre/compare/v0.2.0...HEAD
+[0.1.0]: https://github.com/dgollahon/rspectre/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/dgollahon/rspectre/compare/v0.0.4...v0.1.0
 [0.0.4]: https://github.com/dgollahon/rspectre/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/dgollahon/rspectre/compare/v0.0.2...v0.0.3
