@@ -69,7 +69,15 @@ RSpec.describe RSpectre do
       end
 
       shared_examples 'used with keyword arguments' do |a:|
+        include_context 'context with keyword arguments', a: a
+
         specify { expect(a).to eq(d) }
+      end
+
+      shared_context 'context with keyword arguments' do |a:|
+        it 'is ok to include' do
+          expect(a).to eq(d)
+        end
       end
 
       include_examples('used with keyword arguments', a: 50) do
@@ -84,6 +92,27 @@ RSpec.describe RSpectre do
         before { zapp_brannigan }
       end
 
+      let(:some_object_hash) { { a: 1 } }
+
+      shared_context 'varying keyword and positional hash arguments' do |attrs|
+        let(:some_object_hash) { super().merge(attrs)}
+
+        it 'is a hash' do
+          expect(some_object_hash).to eql(a: 1)
+        end
+      end
+
+      shared_examples 'keyword argument attributes' do |**attrs|
+        include_examples 'varying keyword and positional hash arguments', attrs
+
+        let(:foo) { attrs }
+
+        it 'is a hash' do
+          expect(foo).to eql({})
+        end
+      end
+
+      it_behaves_like 'keyword argument attributes'
       include_examples 'used example'
       include_examples 'used global constant form'
       include_examples 'used global'
