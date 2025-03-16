@@ -2,6 +2,8 @@
 
 ## [Master (Unreleased)]
 
+- Add support for ruby 3.4 [#89](https://github.com/dgollahon/rspectre/pull/89) ([@dgollahon])
+- Remove support for ruby 3.0 [#88](https://github.com/dgollahon/rspectre/pull/88) ([@dgollahon])
 - Suppress method redefined warnings when `$VERBOSE` is `true` [#80](https://github.com/dgollahon/rspectre/pull/80) ([@dgollahon])
 
 ## [0.1.0]
